@@ -1,6 +1,6 @@
 <?php
-session_start();
-include("header.php");
+
+include("adheader.php");
 include("dbconnection.php");
 if(isset($_POST[submit]))
 {
@@ -17,35 +17,27 @@ if(isset($_POST[submit]))
 }
 ?>
 
-<div class="wrapper col2">
-  <div id="breadcrumb">
-    <ul>
-      <li class="first">Add New Change Password</li></ul>
-  </div>
-</div>
-<div class="wrapper col4">
-  <div id="container">
-    <h1>Add new Change Password record</h1>
+<div class="container-fluid">
+    <div class="block-header">
+        <h2> Doctor's Password</h2>
+    </div>
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
    <form method="post" action="" name="frmdoctchangepass" onSubmit="return validateform()">
-    <table width="200" border="3">
-      <tbody>
-        <tr>
-          <td width="34%">Old Password</td>
-          <td width="66%"><input type="password" name="oldpassword" id="oldpassword" /></td>
+   
+      Old Password
+          <td width="66%"><input type="password" name="oldpassword" id="oldpassword" />
         </tr>
-        <tr>
-          <td>New Password</td>
-          <td><input type="password" name="newpassword" id="newpassword" /></td>
+       New Password
+          <td><input type="password" name="newpassword" id="newpassword" />
         </tr>
-        <tr>
-          <td>Confirm Password</td>
-          <td><input type="password" name="password" id="password" /></td>
+       Confirm Password
+          <td><input type="password" name="password" id="password" />
         </tr>
-        <tr>
-          <td height="36" colspan="2" align="center"><input type="submit" name="submit" id="submit" value="Submit" /></td>
+       <input type="submit" name="submit" id="submit" value="Submit" />
         </tr>
-      </tbody>
-    </table>
+     
     </form>
     <p>&nbsp;</p>
   </div>
@@ -55,7 +47,7 @@ if(isset($_POST[submit]))
   </div>
 </div>
 <?php
-include("footer.php");
+include("adfooter.php");
 ?>
 <script type="application/javascript">
 function validateform1()
