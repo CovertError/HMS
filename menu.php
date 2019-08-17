@@ -180,8 +180,7 @@ if(isset($_SESSION[adminid]))
     <ul>
     <li><a href="adminprofile.php">Admin Profile</a></li>
     <li><a href="adminchangepassword.php">Change Password</a></li>
-        <li><a href="admin.php" style="width:150px;">Add Admin</a></li>
-    	<li><a href="viewadmin.php" style="width:150px;">View Admin</a></li>
+        <li><a href="admin.php" style="width:150px;">Add Admin</a></li>    	
     </ul>
 </li>
 <li><a href=" ######### ">Patient</a>
@@ -214,7 +213,8 @@ if(isset($_SESSION[adminid]))
     <ul>
   		
       
-       
+       	<li><a href="department.php" style="width:150px;">Add Department</a></li>
+    	<li><a href="Viewdepartment.php" style="width:150px;">View Department</a></li>
         <li><a href="treatment.php" style="width:150px;">Add Treatment type</a></li>
         <li><a href="viewtreatment.php" style="width:150px;">View Treatment types</a></li>
        	<li><a href="medicine.php" style="width:150px;">Add Medicine</a></li>
