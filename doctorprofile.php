@@ -1,12 +1,12 @@
 <?php
-session_start();
-include("header.php");
+
+include("adheader.php");
 include("dbconnection.php");
 if(isset($_POST[submit]))
 {
 	if(isset($_SESSION[doctorid]))
 	{
-			$sql ="UPDATE doctor SET doctorname='$_POST[doctorname]',mobileno='$_POST[mobilenumber]',departmentid='$_POST[select3]',loginid='$_POST[loginid]',education='$_POST[education]',experience='$_POST[experience]',consultancy_charge='$_POST[consultancy_charge]' WHERE doctorid='$_SESSION[doctorid]'";
+		$sql ="UPDATE doctor SET doctorname='$_POST[doctorname]',mobileno='$_POST[mobilenumber]',departmentid='$_POST[select3]',loginid='$_POST[loginid]',education='$_POST[education]',experience='$_POST[experience]',consultancy_charge='$_POST[consultancy_charge]' WHERE doctorid='$_SESSION[doctorid]'";
 		if($qsql = mysqli_query($con,$sql))
 		{
 			echo "<script>alert('Doctor profile updated successfully...');</script>";
@@ -18,16 +18,16 @@ if(isset($_POST[submit]))
 	}
 	else
 	{
-	$sql ="INSERT INTO doctor(doctorname,mobileno,departmentid,loginid,password,status,education,experience) values('$_POST[doctorname]','$_POST[mobilenumber]','$_POST[select3]','$_POST[loginid]','$_POST[password]','$_POST[select]','$_POST[education]','$_POST[experience]')";
-	if($qsql = mysqli_query($con,$sql))
-	{
-		echo "<script>alert('Doctor record inserted successfully...');</script>";
+		$sql ="INSERT INTO doctor(doctorname,mobileno,departmentid,loginid,password,status,education,experience) values('$_POST[doctorname]','$_POST[mobilenumber]','$_POST[select3]','$_POST[loginid]','$_POST[password]','$_POST[select]','$_POST[education]','$_POST[experience]')";
+		if($qsql = mysqli_query($con,$sql))
+		{
+			echo "<script>alert('Doctor record inserted successfully...');</script>";
+		}
+		else
+		{
+			echo mysqli_error($con);
+		}
 	}
-	else
-	{
-		echo mysqli_error($con);
-	}
-}
 }
 if(isset($_SESSION[doctorid]))
 {
@@ -37,83 +37,92 @@ if(isset($_SESSION[doctorid]))
 	
 }
 ?>
+<div class="container-fluid">
+	<div class="block-header">
+		<h2> Doctor's Profile</h2>
+	</div>
+	<div class="row clearfix">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="card">
 
-<div class="wrapper col2">
-  <div id="breadcrumb">
-    <ul>
-      <li class="first">Add New Doctor </li></ul>
-  </div>
-</div>
-<div class="wrapper col4">
-  <div id="container">
-    <h1>Add new Doctor record</h1>
-   <form method="post" action="" name="frmdoctprfl" onSubmit="return validateform()">
-    <table width="418" border="3">
-      <tbody>
-        <tr>
-          <td width="34%">Doctor Name</td>
-          <td width="66%"><input type="text" name="doctorname" id="doctorname" value="<?php echo $rsedit[doctorname]; ?>" /></td>
-        </tr>
-        <tr>
-          <td>Mobile Number</td>
-          <td><input type="text" name="mobilenumber" id="mobilenumber" value="<?php echo $rsedit[mobileno]; ?>"/></td>
-        </tr>
-        <tr>
-          <td><p>Department</p></td>
-          <td><select name="select3" id="select3" class="form-control">
-          <option value="">Select</option>
-            <?php
-		  	$sqldepartment= "SELECT * FROM department WHERE status='Active'";
-			$qsqldepartment = mysqli_query($con,$sqldepartment);
-			while($rsdepartment=mysqli_fetch_array($qsqldepartment))
-			{
-				if($rsdepartment[departmentid] == $rsedit[departmentid])
-				{
-	echo "<option value='$rsdepartment[departmentid]' selected>$rsdepartment[departmentname]</option>";
-				}
-				else
-				{
-  echo "<option value='$rsdepartment[departmentid]'>$rsdepartment[departmentname]</option>";
-				}
-				
-			}
-		  ?>
-          </select></td>
-        </tr>
-        <tr>
-          <td>Login ID</td>
-          <td><input type="text" name="loginid" id="loginid" value="<?php echo $rsedit[loginid]; ?>"/></td>
-        </tr>
-        <tr>
-          <td>Education</td>
-          <td><input type="text" name="education" id="education" value="<?php echo $rsedit[education]; ?>" /></td>
-        </tr>
-        <tr>
-          <td>Experience</td>
-          <td><input type="text" name="experience" id="experience" value="<?php echo $rsedit[experience]; ?>"/></td>
-        </tr>
-        <tr>
-          <td>Consultancy charge</td>
-          <td>
-            <input type="text" name="consultancy_charge" id="consultancy_charge" value="<?php echo $rsedit[consultancy_charge]; ?>"/></td>
-        </tr>
-        <tr>
-          <td colspan="2" align="center"><input type="submit" name="submit" id="submit" value="Submit" /></td>
-        </tr>
-      </tbody>
-    </table>
-    </form>
-    <p>&nbsp;</p>
-  </div>
-</div>
-</div>
- <div class="clear"></div>
-  </div>
-</div>
-<?php
-include("footer.php");
-?>
-<script type="application/javascript">
+				<form method="post" action="" name="frmdoctprfl" onSubmit="return validateform()">
+					<div class="row">
+						<div class="col-sm-4 col-xs-12">
+							<div class="form-group">
+								<label>Doctor Name</label> 
+								<div class="form-line">
+									<input type="text" name="doctorname" id="doctorname" value="<?php echo $rsedit[doctorname]; ?>" />
+								</div></div>
+								<div class="col-sm-4 col-xs-12">
+									<div class="form-group">
+										<label>Mobile Number</label>
+										<input type="text" name="mobilenumber" id="mobilenumber" value="<?php echo $rsedit[mobileno]; ?>"/>
+									</div></div>
+									<div class="col-sm-4 col-xs-12">
+										<div class="form-group">
+											<label>Department</label> 
+											<div class="form-line">
+												<select name="select3" id="select3" class="form-control">
+													<option value="">Select</option>
+													<?php
+													$sqldepartment= "SELECT * FROM department WHERE status='Active'";
+													$qsqldepartment = mysqli_query($con,$sqldepartment);
+													while($rsdepartment=mysqli_fetch_array($qsqldepartment))
+													{
+														if($rsdepartment[departmentid] == $rsedit[departmentid])
+														{
+															echo "<option value='$rsdepartment[departmentid]' selected>$rsdepartment[departmentname]</option>";
+														}
+														else
+														{
+															echo "<option value='$rsdepartment[departmentid]'>$rsdepartment[departmentname]</option>";
+														}
+
+													}
+													?>
+												</select>
+											</div></div></div>
+											<div class="col-sm-4 col-xs-12">
+												<div class="form-group">
+													<label>Login ID</label> 
+													<div class="form-line">
+														<input type="text" name="loginid" id="loginid" value="<?php echo $rsedit[loginid]; ?>"/>
+													</div></div>
+													<div class="col-sm-4 col-xs-12">
+														<div class="form-group">
+															<label>Education</label> 
+															<div class="form-line">
+																<input type="text" name="education" id="education" value="<?php echo $rsedit[education]; ?>" />
+															</div></div>
+															<div class="col-sm-4 col-xs-12">
+																<div class="form-group">
+																	<label>Experience</label> 
+																	<div class="form-line">
+																		<input type="text" name="experience" id="experience" value="<?php echo $rsedit[experience]; ?>"/>
+																	</div></div>
+																	<div class="col-sm-4 col-xs-12">
+																		<div class="form-group">
+																			<label>Consultancy charge</label> 
+																			<div class="form-line">
+
+																				<input type="text" name="consultancy_charge" id="consultancy_charge" value="<?php echo $rsedit[consultancy_charge]; ?>"/>
+																			</div></div>
+
+																			<input type="submit" name="submit" id="submit" value="Submit" />
+																		</div></div>
+
+																	</form>
+																	<p>&nbsp;</p>
+																</div>
+															</div>
+														</div>
+														<div class="clear"></div>
+													</div>
+												</div>
+												<?php
+												include("adfooter.php");
+												?>
+												<script type="application/javascript">
 var alphaExp = /^[a-zA-Z]+$/; //Variable to validate only alphabets
 var alphaspaceExp = /^[a-zA-Z\s]+$/; //Variable to validate only alphabets and space
 var numericExpression = /^[0-9]+$/; //Variable to validate only numbers
@@ -122,7 +131,7 @@ var emailExp = /^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/; //Variable t
 
 function validateform()
 {
-if(document.frmdoctprfl.doctorname.value == "")
+	if(document.frmdoctprfl.doctorname.value == "")
 	{
 		alert("Doctor name should not be empty..");
 		document.frmdoctprfl.doctorname.focus();

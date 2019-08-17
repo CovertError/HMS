@@ -24,8 +24,7 @@
               </li>
               <li class="email">
                 <p>hello@cnc.com</p>
-                <p>info@cnc.com</p>
-              </li>
+                <p>info@cnc.com</p>              </li>
             </ul>
           </div>
         </div>

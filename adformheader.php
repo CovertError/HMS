@@ -120,7 +120,7 @@ $tim = date("H:i:s");
 
 
                     <li> <a href="javascript:void(0);" class="menu-toggle"><i
-                                class="zmdi zmdi-copy"></i><span>Service</span> </a>
+                                class="zmdi zmdi-settings-square"></i><span>Service</span> </a>
                         <ul class="ml-menu">
                             <li><a href="department.php">Add Department</a></li>
                             <li><a href="viewdepartment.php">View Department</a></li>
@@ -188,7 +188,7 @@ $tim = date("H:i:s");
 
 
                     <li> <a href="javascript:void(0);" class="menu-toggle"><i
-                                class="zmdi zmdi-copy"></i><span>Service</span> </a>
+                                class="zmdi zmdi-settings-square"></i><span>Service</span> </a>
                         <ul class="ml-menu">
                             <li><a href="viewtreatmentrecord.php">View Treatment Records</a></li>
                             <li><a href="viewtreatment.php">View Treatment</a></li>
