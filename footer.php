@@ -16,16 +16,15 @@
         <div class="col-sm-5">
           <div class="con-info">
             <h6>Contact Us</h6>
-            <p>PO Box 16122 Collins Street West 
-              Victoria 8007 Australia</p>
+            <p>Zigatola, Dhanmondi</p>
             <ul>
               <li class="mobile">
                 <p>1111 222 33333</p>
                 <p>9-820-323-Hello</p>
               </li>
               <li class="email">
-                <p>hello@medical.com</p>
-                <p>info@medical.com</p>
+                <p>hello@cnc.com</p>
+                <p>info@cnc.com</p>
               </li>
             </ul>
           </div>
@@ -37,7 +36,7 @@
   <!-- Rights -->
   <div class="rights style-2">
     <div class="container">
-      <p>© 2017 Medical. Made by M_ADNAN</p>
+      <p>© 2019 Care and Cure. Template Made by M_ADNAN & Application Developed By <strong><span style="color: white">Khyrul Kabir</span></strong>  </p>
     </div>
   </div>
   
