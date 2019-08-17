@@ -1,10 +1,9 @@
-This is a Startup Project. May contain Bugs.
+## This is a Startup Project. May contain Bugs.
 
-INSTALLATION
+# INSTALLATION
 ------------
 <ol>
 <li>Download and Unzip files To Localhost Folder.</li>
-<li>Unzip All Zip File</li>
 <li>Import Database.</li>
 </ol>
 
