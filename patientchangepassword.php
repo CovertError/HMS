@@ -1,6 +1,6 @@
 <?php
 include("adheader.php");
-session_start();
+
 
 include("dbconnection.php");
 if(isset($_POST[submit]))
@@ -24,40 +24,47 @@ if(isset($_POST[submit]))
 }
 ?>
 
-
-<div class="wrapper col4">
-  <div id="container" class="card">
-    <h1>Add new Change Password record</h1>
-    <form method="post" action="" name="frmpatchange" onSubmit="return validateform()">
-    <table class="table table-striped">
-      <tbody>
-      	<div class="form-line">
-        <tr>
-          <td width="34%">Old Password</td>
-          <td width="66%"><input class="form-control" type="password" name="oldpassword" id="oldpassword" /></td>
-        </tr>
+<div class="container-fluid">
+    <div class="block-header">
+        <h2> Patient's Password</h2>
     </div>
-        <tr>
-          <td>New Password</td>
-          <td><input class="form-control" type="password" name="newpassword" id="newpassword" /></td>
-        </tr>
-        <tr>
-          <td>Confirm Password</td>
-          <td><input class="form-control" type="password" name="password" id="password" /></td>
-        </tr>
-        <tr>
-          <td height="36" colspan="2" align="center"><input class="btn btn-default" type="submit" name="submit" id="submit" value="Submit" /></td>
-        </tr>
-      </tbody>
-    </table>
-    </form>
-    <p>&nbsp;</p>
-  </div>
+    <div class="row clearfix">
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="card">
+               <form method="post" action="" name="frmpatchange" onSubmit="return validateform()"
+                    style="padding: 10px">
+                    <div class="form-group">
+                        <label>Old Password</label>
+                        <div class="form-line">
+                            <input class="form-control" type="password" name="oldpassword" id="oldpassword" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>New Password</label>
+                        <div class="form-line">
+                            <input class="form-control" type="password" name="newpassword" id="newpassword" />
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <div class="form-line">
+                            <input class="form-control" type="password" name="password" id="password" />
+                        </div>
+                    </div>
+
+                    <input class="btn btn-raised g-bg-cyan" type="submit" name="submit" id="submit" value="Submit" />
+
+
+                </form>
+                <p>&nbsp;</p>
+            </div>
+        </div>
+    </div>
+    <div class="clear"></div>
 </div>
-</div>
- <div class="clear"></div>
-  </div>
-</div>
+</div> 
+
 <?php
 include("adfooter.php");
 ?>
@@ -76,9 +83,9 @@ function validateform()
 		document.frmpatchange.newpassword.focus();
 		return false;
 	}
-	else if(document.frmpatchange.newpassword.value.length < 8)
+	else if(document.frmpatchange.newpassword.value.length < 6)
 	{
-		alert("New Password length should be more than 8 characters...");
+		alert("New Password length should be more than 6 characters...");
 		document.frmpatchange.newpassword.focus();
 		return false;
 	}

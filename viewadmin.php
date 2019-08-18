@@ -27,7 +27,7 @@ if(isset($_GET[delid]))
         <td width="12%" height="40">Admin Name</td>
         <td width="11%">Login ID</td>
         <td width="12%">Status</td>
-        <td width="34%">Action</td>
+        <td width="10%">Action</td>
       </tr>
     </thead>
     <tbody>

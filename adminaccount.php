@@ -78,12 +78,15 @@ if(!isset($_SESSION[adminid]))
                 <div class="icon"> <i class="zmdi zmdi-balance col-cyan"></i> </div>
                 <div class="content">
                     <div class="text">Hospital Earning</div>
-                    <div class="number">
-                        <?php
-                        $sql = "SELECT * FROM billing_records WHERE status='Active'";
-                        $qsql = mysqli_query($con,$sql);
-                        echo mysqli_num_rows($qsql);
-                        ?>
+                    <div class="number">৳ 
+                        <?php 
+              $sql = "SELECT sum(bill_amount) as total  FROM `billing_records` ";
+              $qsql = mysqli_query($con,$sql);
+              while ($row = mysqli_fetch_assoc($qsql))
+              { 
+               echo $row['total'];
+             }
+              ?>
                     </div>
                 </div>
             </div>

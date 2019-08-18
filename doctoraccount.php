@@ -3,7 +3,7 @@
 
 include("adheader.php");
 include 'dbconnection.php';
-session_start();
+
 if(!isset($_SESSION[doctorid]))
 {
 	echo "<script>window.location='doctorlogin.php';</script>";

@@ -37,102 +37,131 @@ if(isset($_GET[editid]))
 }
 ?>
 
-
 <div class="container-fluid">
-  	<div class="block-header">
-            <h2>Add New Doctor record</h2>
-            
-        </div>
-    
-    <form method="post" action="" name="frmdoct" onSubmit="return validateform()">
-    <table class="table table-hover">
-      <tbody>
-        <tr>
-          <td width="34%">Doctor Name</td>
-          <td width="66%"><input class="form-control" placeholder="Enter Here" type="text" name="doctorname" id="doctorname" value="<?php echo $rsedit[doctorname]; ?>" /></td>
-        </tr>
-        <tr>
-          <td>Mobile Number</td>
-          <td><input class="form-control" placeholder="Enter Here" type="text" name="mobilenumber" id="mobilenumber" value="<?php echo $rsedit[mobileno]; ?>"/></td>
-        </tr>
-        <tr>
-          <td>Department</td>
-          <td><select  name="select3" id="select3" class="form-control show-tick">
-          <option value="">Select</option>
-            <?php
-		  	$sqldepartment= "SELECT * FROM department WHERE status='Active'";
-			$qsqldepartment = mysqli_query($con,$sqldepartment);
-			while($rsdepartment=mysqli_fetch_array($qsqldepartment))
-			{
-				if($rsdepartment[departmentid] == $rsedit[departmentid])
-				{
-	echo "<option value='$rsdepartment[departmentid]' selected>$rsdepartment[departmentname]</option>";
-				}
-				else
-				{
-  echo "<option value='$rsdepartment[departmentid]'>$rsdepartment[departmentname]</option>";
-				}
+	<div class="block-header">
+		<h2> Add New Doctor </h2>
+	</div>
+	<div class="row clearfix">
+		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+			<div class="card">
+
+
+				<form method="post" action="" name="frmdoct" onSubmit="return validateform()" style="padding: 10px">
+
+
+					
+					<div class="form-group"><label>Doctor Name</label> 
+					<div class="form-line">
+					<input class="form-control" type="text" name="doctorname" id="doctorname" value="<?php echo $rsedit[doctorname]; ?>" />
+				</div>
+				</div>
+
+
+					<div class="form-group"><label>Mobile Number</label> 
+					<div class="form-line">
+					<input class="form-control" type="text" name="mobilenumber" id="mobilenumber" value="<?php echo $rsedit[mobileno]; ?>"/>
+				</div>
+				</div>
+
+
+					<div class="form-group"><label>Department</label> 
+						<div class="form-line">
+					<select  name="select3" id="select3" class="form-control show-tick">
+						<option value="">Select</option>
+						<?php
+						$sqldepartment= "SELECT * FROM department WHERE status='Active'";
+						$qsqldepartment = mysqli_query($con,$sqldepartment);
+						while($rsdepartment=mysqli_fetch_array($qsqldepartment))
+						{
+							if($rsdepartment[departmentid] == $rsedit[departmentid])
+							{
+								echo "<option value='$rsdepartment[departmentid]' selected>$rsdepartment[departmentname]</option>";
+							}
+							else
+							{
+								echo "<option value='$rsdepartment[departmentid]'>$rsdepartment[departmentname]</option>";
+							}
+
+						}
+						?>
+					</select>
+				</div>
+			</div>
+
+					<div class="form-group"><label>Login ID</label> 
+					<div class="form-line">
+					<input class="form-control" type="text" name="loginid" id="loginid" value="<?php echo $rsedit[loginid]; ?>"/>
+				</div>
+				</div>
+
+
+					<div class="form-group"><label>Password</label> 
+					<div class="form-line">
+					<input class="form-control" type="password" name="password" id="password" value="<?php echo $rsedit[password]; ?>"/>
+				</div>
+				</div>
+
+
+					<div class="form-group"><label>Confirm Password</label> 
+					<div class="form-line">
+					<input class="form-control" type="password" name="cnfirmpassword" id="cnfirmpassword" value="<?php echo $rsedit[password]; ?>"/>
+				</div>
+				</div>
+
+
+					<div class="form-group"><label>Education</label> 
+					<div class="form-line">
+					<input class="form-control" type="text" name="education" id="education" value="<?php echo $rsedit[education]; ?>" />
+				</div>
+				</div>
+
+
+					<div class="form-group"><label>Experience</label> 
+					<div class="form-line">
+					<input class="form-control" type="text" name="experience" id="experience" value="<?php echo $rsedit[experience]; ?>"/>
+				</div>
+				</div>
+
+
+					<div class="form-group"><label>Consultancy Charge</label> 
+					<div class="form-line">
+					<input class="form-control" type="text" name="consultancy_charge" id="consultancy_charge" value="<?php echo $rsedit[experience]; ?>"/>
+				</div>
+				</div>
+
+					<div class="form-group">
+					<label>Status</label> 
+					<div class="form-line">
+					<select class="form-control show-tick" name="select" id="select">
+						<option value="" selected="" hidden>Select</option>
+						<?php
+						$arr= array("Active","Inactive");
+						foreach($arr as $val)
+						{
+							if($val == $rsedit[status])
+							{
+								echo "<option value='$val' selected>$val</option>";
+							}
+							else
+							{
+								echo "<option value='$val'>$val</option>";
+							}
+						}
+						?>
+					</select>
+				</div>
+				</div>
+
+
+					
+					<input class="btn btn-default" type="submit" name="submit" id="submit" value="Submit" />
 				
-			}
-		  ?>
-          </select></td>
-        </tr>
-        <tr>
-          <td>Login ID</td>
-          <td><input class="form-control" placeholder="Enter Here" type="text" name="loginid" id="loginid" value="<?php echo $rsedit[loginid]; ?>"/></td>
-        </tr>
-        <tr>
-          <td>Password</td>
-          <td><input class="form-control" placeholder="Enter Here" type="password" name="password" id="password" value="<?php echo $rsedit[password]; ?>"/></td>
-        </tr>
-        <tr>
-          <td>Confirm Password</td>
-          <td><input class="form-control" placeholder="Enter Here" type="password" name="cnfirmpassword" id="cnfirmpassword" value="<?php echo $rsedit[password]; ?>"/></td>
-        </tr>
-        <tr>
-          <td>Education</td>
-          <td><input class="form-control" placeholder="Enter Here" type="text" name="education" id="education" value="<?php echo $rsedit[education]; ?>" /></td>
-        </tr>
-        <tr>
-          <td>Experience</td>
-          <td><input class="form-control" placeholder="Enter Here" type="text" name="experience" id="experience" value="<?php echo $rsedit[experience]; ?>"/></td>
-        </tr>
-        <tr>
-          <td>Consultancy Charge</td>
-          <td><input class="form-control" placeholder="Enter Here" type="text" name="consultancy_charge" id="consultancy_charge" value="<?php echo $rsedit[experience]; ?>"/></td>
-        </tr>
-        <tr>
-          <td>Status</td>
-          <td><select class="form-control show-tick" name="select" id="select">
-            <option value="">Select</option>
-            <?php
-		  $arr= array("Active","Inactive");
-		  foreach($arr as $val)
-		  {
-			  if($val == $rsedit[status])
-			  {
-			  echo "<option value='$val' selected>$val</option>";
-			  }
-			  else
-			  {
-			  echo "<option value='$val'>$val</option>";
-			  }
-		  }
-		  ?>
-          </select></td>
-        </tr>
-        <tr>
-          <td colspan="2" align="center"><input class="btn btn-default" type="submit" name="submit" id="submit" value="Submit" /></td>
-        </tr>
-      </tbody>
-    </table>
-    </form>
-    <p>&nbsp;</p>
-  </div>
-</div>
-</div>
- <div class="clear"></div>
-  </div>
+
+
+				</form>
+			</div>
+		</div>
+	</div>
 </div>
 <?php
 include("adfooter.php");

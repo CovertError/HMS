@@ -1,7 +1,5 @@
 <?php
 include("adheader.php");
-session_start();
-
 include("dbconnection.php");
 if(isset($_POST[submit]))
 {
@@ -39,16 +37,18 @@ if(isset($_SESSION[patientid]))
                         <div class="row clearfix">
                             <div class="col-sm-6 col-xs-12">
                                 <div class="form-group">
+                                	<label for="">Patient name</label>
                                     <div class="form-line">
-                                    	<label for="">patient name</label>
+                                    	
                                         <input class="form-control" type="text" name="patientname" id="patientname"  value="<?php echo $rsedit[patientname]; ?>"/>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-xs-12">
                                 <div class="form-group">
+                                	<label for="">Admission date</label>
                                     <div class="form-line">
-                                    	<label for="">admission date</label>
+                                    	
                                         <input class="form-control" type="date" name="admissiondate" id="admissiondate" value="<?php echo $rsedit[admissiondate]; ?>" />
                                     </div>
                                 </div>
@@ -57,59 +57,71 @@ if(isset($_SESSION[patientid]))
                         <div class="row clearfix">
                             <div class="col-sm-6 col-xs-12">
                                 <div class="form-group">
-                                    <div class="form-line">
+                                	<label for="admissiontme">Admission time</label>
+                                    <div class="form-line">                                 	
                                     	
-                                    	<label for="admissiontme">Admission time</label>
                                         <input class="form-control" type="time" name="admissiontme" id="admissiontme" value="<?php echo $rsedit[admissiontime]; ?>" />
                                     </div>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-xs-12">
                                 <div class="form-group ">
-                                	<label for="">address</label>
+                                	<label for="">Address</label>
+                                	<div class="form-line">
                                     <input class="form-control" name="address" id="address" value="<?php echo $rsedit[address]; ?>" /> 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row clearfix">
-                            <div class="col-sm-6 col-xs-12">
-                                <div class="form-group drop-custum">
-                                	<label for="">mobilenumber</label>
-                                    <input class="form-control" type="text" name="mobilenumber" id="mobilenumber" value="<?php echo $rsedit[mobileno]; ?>" />
-                                </div>
-                            </div>
-                            <div class="col-sm-6 col-xs-12">
-                                <div class="form-group">
-                                    <div class="form-line">
-                                    	<label for="">city</label>
-                                       <input class="form-control" type="text" name="city" id="city" value="<?php echo $rsedit[city]; ?>" />
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="row clearfix">
-                            <div class="col-sm-12">
+                            <div class="col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                	<label for="">Mobile number</label>
+                                	<div class="form-line">
+                                    <input class="form-control" type="text" name="mobilenumber" id="mobilenumber" value="<?php echo $rsedit[mobileno]; ?>" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xs-12">
+                                <div class="form-group">
+                                    <div class="form-line">
+                                    	<label for="">City</label>
+                                    	<div class="form-line">
+                                       <input class="form-control" type="text" name="city" id="city" value="<?php echo $rsedit[city]; ?>" />
+                                       </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row clearfix">
+                            <div class="col-sm-6">
                                 <div class="form-group">
                                     <div class="form-line">
                                     	<label for="">pincode</label>
+                                    	<div class="form-line">
+
                                         <input class="form-control" type="text" name="pincode" id="pincode" value="<?php echo $rsedit[pincode]; ?>" />
+                                    </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-12">
+                            <div class="col-sm-6">
                                 <div class="form-group">
                                     <div class="form-line">
                                     	<label for="">loginid</label>
+                                    	<div class="form-line">
                                         <input class="form-control" type="text" name="loginid" id="loginid"  value="<?php echo $rsedit[loginid]; ?>"/>
+                                    </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-12">
+                            <div class="col-sm-6">
                                 <div class="form-group">
                                     <div class="form-line">
-                                    	<label for="blood group"></label>
-                                    	<select name="select2" id="select2">
-                                    		<option value="">Select</option>
+                                    	<label for="blood group">Blood group</label>
+                                    	<div class="form-line">
+                                    	<select name="select2" id="select2" class="form-control show-tick">
+                                    		<option value="" selected hidden="">Select</option>
                                     		<?php
                                     		$arr = array("A+","A-","B+","B-","O+","O-","AB+","AB-");
                                     		foreach($arr as $val)
@@ -126,14 +138,16 @@ if(isset($_SESSION[patientid]))
                                     		?>
                                     	</select>
                                     </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-sm-12">
+                            <div class="col-sm-6">
                                 <div class="form-group">
                                     <div class="form-line">
                                     	<label for="">Gender</label>
-                                    	<select name="select3" id="select3">
-                                    		<option value="">Select</option>
+                                    	<div class="form-line">
+                                    	<select name="select3" id="select3" class="form-control show-tick">
+                                    		<option value="" selected="" hidden="">Select</option>
                                     		<?php
                                     		$arr = array("MALE","FEMALE");
                                     		foreach($arr as $val)
@@ -150,13 +164,16 @@ if(isset($_SESSION[patientid]))
                                     		?>
                                     	</select>
                                     </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-sm-12">
                                 <div class="form-group">
                                     <div class="form-line">
-                                    	<label for="">date of birth</label>
+                                    	<label for="">Date of birth</label>
+                                    	<div class="form-line">
                                        <input class="form-control" type="date" name="dateofbirth" id="dateofbirth"  value="<?php echo $rsedit[dob]; ?>"/>
+                                   </div>
                                     </div>
                                 </div>
                             </div>

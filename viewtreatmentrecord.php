@@ -1,7 +1,5 @@
 <?php
 include("adformheader.php");
-session_start();
-
 include("dbconnection.php");
 if(isset($_GET[delid]))
 {
@@ -14,22 +12,29 @@ if(isset($_GET[delid]))
 }
 ?>
 
+<div class="container-fluid">
+  <div class="block-header">
+    <h2>View new treatment records</h2>
 
-<div class="wrapper col4">
-  <div id="container">
-    <h1>View new treatment records</h1>
-    <form method="post" action="">
-      <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-        <tbody>
-          <tr>
-            <td width="71">Treatment type</td>
-            <td width="52">Patient</td>
-            <td width="78">Doctor</td>
-            <td width="82">Treatment Description</td>
-            <td width="43">Treatmentdate</td>
-            <td width="43">Treatmenttime</td>
+  </div>
+
+  <div class="card">
+
+    <section class="container">
+     <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+     	<thead>
+     		 <tr>
+            <td width="71"	scope="col">Treatment type</td>
+            <td width="52"	scope="col">Patient</td>
+            <td width="78"	scope="col">Doctor</td>
+            <td width="82"	scope="col">Treatment Description</td>
+            <td width="43"	scope="col">Treatment date</td>
+            <td width="43"	scope="col">Treatment time</td>
      
           </tr>
+     	</thead>
+        <tbody>
+         
           <?php
 		$sql ="SELECT * FROM treatment_records where status='Active'";
 		if(isset($_SESSION[patientid]))
@@ -68,13 +73,8 @@ if(isset($_GET[delid]))
 		?>
         </tbody>
       </table>
-    </form>
-    <p>&nbsp;</p>
-  </div>
+</section>
 </div>
-</div>
- <div class="clear"></div>
-  </div>
 </div>
 <?php
 include("adformfooter.php");

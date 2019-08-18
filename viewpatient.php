@@ -16,7 +16,7 @@ if(isset($_GET[delid]))
     <h2>View Patient records</h2>
 
   </div>
-</div>
+
 <div class="card">
 
   <section class="container">
@@ -62,7 +62,7 @@ if(isset($_GET[delid]))
 </section>
 
 </div>
-
+</div>
 <?php
 include("adformfooter.php");
 ?>

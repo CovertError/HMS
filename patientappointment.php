@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include("header.php");
 include("dbconnection.php");
 if(isset($_POST[submit]))
@@ -52,10 +52,10 @@ if(isset($_GET[editid]))
 }
 if(isset($_SESSION[patientid]))
 {
-$sqlpatient = "SELECT * FROM patient WHERE patientid='$_SESSION[patientid]' ";
-$qsqlpatient = mysqli_query($con,$sqlpatient);
-$rspatient = mysqli_fetch_array($qsqlpatient);
-$readonly = " readonly";
+    $sqlpatient = "SELECT * FROM patient WHERE patientid='$_SESSION[patientid]' ";
+    $qsqlpatient = mysqli_query($con,$sqlpatient);
+    $rspatient = mysqli_fetch_array($qsqlpatient);
+    $readonly = " readonly";
 }
 ?>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -64,31 +64,31 @@ $readonly = " readonly";
     <div id="container">
 
         <?php
-if(isset($_POST[submit]))
-{
-	if(mysqli_num_rows($qsqlappointment) >= 1)
-	{		
-			echo "<h2>Appointment already scheduled for ". date("d-M-Y", strtotime($_POST[appointmentdate])) . " " . date("H:i A", strtotime($_POST[appointmenttime])) . " .. </h2>";
-	}
-	else
-	{
-		if(isset($_SESSION[patientid]))
-		{
-			echo "<h2>Appointment taken successfully.. </h2>";
-			echo "<p>Appointment record is in pending process. Kinldy check the appointment status. </p>";
-			echo "<p> <a href='viewappointment.php'>View Appointment record</a>. </p>";			
-		}
-		else
-		{
-			echo "<h2>Appointment taken successfully.. </h2>";
-			echo "<p>Appointment record is in pending process. Please wait for confirmation message.. </p>";
-			echo "<p> <a href='patientlogin.php'>Click here to Login</a>. </p>";	
-		}
-	}
-}
-else
-{
- ?>
+        if(isset($_POST[submit]))
+        {
+           if(mysqli_num_rows($qsqlappointment) >= 1)
+           {		
+             echo "<h2>Appointment already scheduled for ". date("d-M-Y", strtotime($_POST[appointmentdate])) . " " . date("H:i A", strtotime($_POST[appointmenttime])) . " .. </h2>";
+         }
+         else
+         {
+          if(isset($_SESSION[patientid]))
+          {
+             echo "<h2>Appointment taken successfully.. </h2>";
+             echo "<p>Appointment record is in pending process. Kinldy check the appointment status. </p>";
+             echo "<p> <a href='viewappointment.php'>View Appointment record</a>. </p>";			
+         }
+         else
+         {
+             echo "<h2>Appointment taken successfully.. </h2>";
+             echo "<p>Appointment record is in pending process. Please wait for confirmation message.. </p>";
+             echo "<p> <a href='patientlogin.php'>Click here to Login</a>. </p>";	
+         }
+     }
+ }
+ else
+ {
+   ?>
         <!-- Content -->
         <div id="content">
 
@@ -115,7 +115,7 @@ else
                                             <label>
 
 
-                                                <input type="text" class="form-control" name="patiente" id="patiente"
+                                                <input placeholder="patient name" type="text" class="form-control" name="patiente" id="patiente"
                                                     value="<?php echo $rspatient[patientname];  ?>"
                                                     <?php echo $readonly; ?>>
                                                 <i class="icon-user"></i>
@@ -124,99 +124,100 @@ else
                                         </li>
 
                                         <li class="col-sm-6">
-                                            <label><input type="text" class="form-control" name="textarea" id="textarea"
+                                            <label><input placeholder="address" type="text" class="form-control" name="textarea" id="textarea"
                                                     value="<?php echo $rspatient[address];  ?>"
-                                                    <?php echo $readonly; ?>><i class="icon-envelope"></i>
+                                                    <?php echo $readonly; ?>><i class="icon-compass"></i>
                                             </label>
 
                                         </li>
                                         <li class="col-sm-6">
-                                            <label><input type="text" class="form-control" name="city" id="city"
+                                            <label><input placeholder="city" type="text" class="form-control" name="city" id="city"
                                                     value="<?php echo $rspatient[city];  ?>" <?php echo $readonly; ?>><i
-                                                    class="icon-envelope"></i>
+                                                    class="icon-pin"></i>
                                             </label>
 
                                         </li>
                                         <li class="col-sm-6">
                                             <label>
-                                                <input type="text" class="form-control" name="mobileno" id="mobileno"
+                                                <input placeholder="mobile number" type="text" class="form-control" name="mobileno" id="mobileno"
                                                     value="<?php echo $rspatient[mobileno];  ?>"
-                                                    <?php echo $readonly; ?>><i class="icon-envelope"></i>
+                                                    <?php echo $readonly; ?>><i class="icon-phone"></i>
                                             </label>
 
                                         </li>
                                         <?php
-		  if(!isset($_SESSION[patientid]))
-		  {        
-?>
+                            if(!isset($_SESSION[patientid]))
+                            {        
+                                ?>
                                         <li class="col-sm-6">
                                             <label>
-                                                <input type="text" class="form-control" name="loginid" id="loginid"
+                                                <input placeholder="login id" type="text" class="form-control" name="loginid" id="loginid"
                                                     value="<?php echo $rspatient[loginid];  ?>"
-                                                    <?php echo $readonly; ?>><i class="icon-envelope"></i>
+                                                    <?php echo $readonly; ?>><i class="icon-login"></i>
                                             </label>
 
                                         </li>
                                         <li class="col-sm-6">
                                             <label>
 
-                                                <input type="password" class="form-control" name="password" id="password"
-                                                    value="<?php echo $rspatient[patientname];  ?>"
-                                                    <?php echo $readonly; ?>><i class="icon-envelope"></i>
+                                                <input placeholder="password" type="password" class="form-control" name="password"
+                                                    id="password" value="<?php echo $rspatient[password];  ?>"
+                                                    <?php echo $readonly; ?>><i class="icon-lock"></i>
                                             </label>
 
                                         </li>
                                         <?php
-		  }
-?>
+                            }
+                            ?>
                                         <li class="col-sm-6">
                                             <label>
 
                                                 <?php 
-		  if(isset($_SESSION[patientid]))
-		  {
-			  echo $rspatient[gender];
-		  }
-		  else
-		  {
-		  ?>
+                                    if(isset($_SESSION[patientid]))
+                                    {
+                                       echo $rspatient[gender];
+                                   }
+                                   else
+                                   {
+                                    ?>
                                                 <select name="select6" id="select6" class="selectpicker">
-                                                    <option value="">Select</option>
+                                                    <option value="" selected="" hidden="">Select Gender</option>
                                                     <?php
-                $arr = array("Male","Female");
-                foreach($arr as $val)
-                {
-                    echo "<option value='$val'>$val</option>";
-                }
-                ?>
+                                        $arr = array("Male","Female");
+                                        foreach($arr as $val)
+                                        {
+                                            echo "<option value='$val'>$val</option>";
+                                        }
+                                        ?>
                                                 </select>
                                                 <?php
-		  	}
-		  	?>
-                                                <i class="icon-envelope"></i>
+                                }
+                                ?>
+                                                <i class="ion-transgender"></i>
                                             </label>
 
                                         </li>
                                         <li class="col-sm-6">
                                             <label>
-                                                <input type="date" class="form-control" name="dob" id="dob"
+                                                <input placeholder="Date of birth" type="text" class="form-control" name="dob" id="dob" onfocus="(this.type='date')"
                                                     value="<?php echo $rspatient[dob]; ?>" <?php echo $readonly; ?>><i
-                                                    class="icon-envelope"></i>
+                                                    class="ion-calendar"></i>
                                             </label>
 
                                         </li>
                                         <li class="col-sm-6">
                                             <label>
-                                                <input type="date" class="form-control" min="<?php echo date("Y-m-d"); ?>"
-                                                    name="appointmentdate" id="appointmentdate"><i
-                                                    class="icon-envelope"></i>
+                                                <input placeholder="Appointment date" type="text" class="form-control"
+                                                    min="<?php echo date("Y-m-d"); ?>" name="appointmentdate"
+                                                    onfocus="(this.type='date')"
+                                                    id="appointmentdate"><i class="ion-calendar"></i>
                                             </label>
 
                                         </li>
                                         <li class="col-sm-6">
                                             <label>
-                                                <input type="time" class="form-control" name="appointmenttime" id="appointmenttime"><i
-                                                    class="icon-envelope"></i>
+                                                <input placeholder="Appointment time" type="text" onfocus="(this.type='time')" class="form-control" name="appointmenttime"
+                                                    id="appointmenttime"><i class="ion-ios-clock"></i>
                                             </label>
 
                                         </li>
@@ -227,46 +228,59 @@ else
                                                     onchange="loaddoctor(this.value)">
                                                     <option value="">Select department</option>
                                                     <?php
-		  	$sqldept = "SELECT * FROM department WHERE status='Active'";
-			$qsqldept = mysqli_query($con,$sqldept);
-			while($rsdept = mysqli_fetch_array($qsqldept))
-			{
-			echo "<option value='$rsdept[departmentid]'>$rsdept[departmentname]</option>";
-			}
-		  ?>
+                                $sqldept = "SELECT * FROM department WHERE status='Active'";
+                                $qsqldept = mysqli_query($con,$sqldept);
+                                while($rsdept = mysqli_fetch_array($qsqldept))
+                                {
+                                 echo "<option value='$rsdept[departmentid]'>$rsdept[departmentname]</option>";
+                             }
+                             ?>
                                                 </select>
-                                                <i class="icon-envelope"></i>
+                                                <i class="ion-university"></i>
                                             </label>
 
                                         </li>
                                         <li class="col-sm-6">
                                             <label>
+                                                <select name="department" class="selectpicker" id="department"
+                                                    onchange="loaddoctor(this.value)">
+                                                    <option value="">Select department</option>
+                                                    <?php
+                        $sqldept = "SELECT * FROM doctor WHERE status='Active'";
+                        $qsqldept = mysqli_query($con,$sqldept);
+                        while($rsdept = mysqli_fetch_array($qsqldept))
+                        {
+                            echo "<option value='$rsdept[doctorid]'>$rsdept[doctorname] (";
+                            $sqldept = "SELECT * FROM department WHERE departmentid='$rsdept[departmentid]'";
+                            $qsqldept = mysqli_query($con,$sqldept);
+                            $rsdept = mysqli_fetch_array($qsqldept);
+                            echo $rsdept[departmentname];
 
-                                                <div id="divdoc">
-                                                    <select name="doct" class="selectpicker" id="doct">
-                                                        <option value="">Select doctor</option>
-                                                    </select>
-                                                </div>
-                                               <!-- <i class="icon-envelope"></i> -->s
+                            echo ")</option>";
+                        }
+                        ?>
+                                                </select>
+                                                <i class="ion-medkit"></i>
+
                                             </label>
 
                                         </li>
                                         <li class="col-sm-12">
                                             <label>
-                                                <textarea class="form-control" name="app_reason"></textarea>
+                                                <textarea class="form-control" name="app_reason" placeholder="Appointment reason"></textarea>
                                             </label>
                                         </li>
-                                         <li class="col-sm-12">
+                                        <li class="col-sm-12">
                                             <button type="submit" class="btn" name="submit" id="submit">make an
-                                        appointment</button>
-                                    </li>
+                                                appointment</button>
+                                        </li>
                                 </form>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <p>&nbsp;</p>
+                
                 <?php
 }
 ?>
@@ -275,8 +289,6 @@ else
     </div>
 </div>
 </section>
-<div class="clear"></div>
-</div>
 </div>
 
 

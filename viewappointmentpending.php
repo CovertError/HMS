@@ -29,7 +29,7 @@ if(isset($_GET[approveid]))
 	<div class="block-header">
 		View Appointment records
 	</div>
-</div>
+
 
 <div class="card">
 	<section class="container">
@@ -44,7 +44,7 @@ if(isset($_GET[approveid]))
 					<th>Doctor</th>
 					<th>Appointment Reason</th>
 					<th>Status</th>
-					<th><div align="center">Action</div></th>
+					<th width="15%">Action</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -82,9 +82,9 @@ if(isset($_GET[approveid]))
 					{
 						if(!(isset($_SESSION[patientid])))
 						{
-							echo "<a href='appointmentapproval.php?editid=$rs[appointmentid]&patientid=$rs[patientid]' class='btn btn-raised g-bg-cyan'>Approve</a><hr>";
+							echo "<a href='appointmentapproval.php?editid=$rs[appointmentid]&patientid=$rs[patientid]' class='btn btn-sm btn-raised g-bg-cyan'>Approve</a>";
 						}
-						echo "  <a href='viewappointment.php?delid=$rs[appointmentid]' class='btn btn-raised g-bg-blush2'>Delete</a>";
+						echo "  <a href='viewappointment.php?delid=$rs[appointmentid]' class='btn btn-sm btn-raised g-bg-blush2'>Delete</a>";
 					}
 					else
 					{

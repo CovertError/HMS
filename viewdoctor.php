@@ -16,13 +16,12 @@ if(isset($_GET[delid]))
 		<h2>View  Doctor</h2>
 
 	</div>
-</div>
+
 <div class="card">
 
 	<section class="container">
 		<table class="table table-bordered table-striped table-hover js-basic-example dataTable">
-
-			<tbody>
+			<thead>
 				<tr>
 					<td>Doctor Name</td>
 					<td>Mobile Number</td>
@@ -34,6 +33,9 @@ if(isset($_GET[delid]))
 					<td>Status</td>
 					<td>Action</td>
 				</tr>
+			</thead>
+			<tbody>
+				
 				<?php
 				$sql ="SELECT * FROM doctor";
 				$qsql = mysqli_query($con,$sql);
@@ -60,7 +62,7 @@ if(isset($_GET[delid]))
 			</table>
 		</section>
 	</div>
-
+</div>
 	<?php
 	include("adformfooter.php");
 	?>

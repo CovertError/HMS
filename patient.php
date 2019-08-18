@@ -1,11 +1,11 @@
 <?php
-include("adheader.php");
+include("adformheader.php");
 include("dbconnection.php");
 if(isset($_POST[submit]))
 {
 	if(isset($_GET[editid]))
 	{
-			$sql ="UPDATE patient SET patientname='$_POST[patientname]',admissiondate='$_POST[admissiondate]',admissiontime='$_POST[admissiontme]',address='$_POST[address]',mobileno='$_POST[mobilenumber]',city='$_POST[city]',pincode='$_POST[pincode]',loginid='$_POST[loginid]',password='$_POST[password]',bloodgroup='$_POST[select2]',gender='$_POST[select3]',dob='$_POST[dateofbirth]',status='$_POST[select]' WHERE patientid='$_GET[editid]'";
+		$sql ="UPDATE patient SET patientname='$_POST[patientname]',admissiondate='$_POST[admissiondate]',admissiontime='$_POST[admissiontme]',address='$_POST[address]',mobileno='$_POST[mobilenumber]',city='$_POST[city]',pincode='$_POST[pincode]',loginid='$_POST[loginid]',password='$_POST[password]',bloodgroup='$_POST[select2]',gender='$_POST[select3]',dob='$_POST[dateofbirth]',status='$_POST[select]' WHERE patientid='$_GET[editid]'";
 		if($qsql = mysqli_query($con,$sql))
 		{
 			echo "<script>alert('patient record updated successfully...');</script>";
@@ -17,25 +17,25 @@ if(isset($_POST[submit]))
 	}
 	else
 	{
-	$sql ="INSERT INTO patient(patientname,admissiondate,admissiontime,address,mobileno,city,pincode,loginid,password,bloodgroup,gender,dob,status) values('$_POST[patientname]','$dt','$tim','$_POST[address]','$_POST[mobilenumber]','$_POST[city]','$_POST[pincode]','$_POST[loginid]','$_POST[password]','$_POST[select2]','$_POST[select3]','$_POST[dateofbirth]','Active')";
-	if($qsql = mysqli_query($con,$sql))
-	{
-		echo "<script>alert('patients record inserted successfully...');</script>";
-		$insid= mysqli_insert_id($con);
-		if(isset($_SESSION[adminid]))
+		$sql ="INSERT INTO patient(patientname,admissiondate,admissiontime,address,mobileno,city,pincode,loginid,password,bloodgroup,gender,dob,status) values('$_POST[patientname]','$dt','$tim','$_POST[address]','$_POST[mobilenumber]','$_POST[city]','$_POST[pincode]','$_POST[loginid]','$_POST[password]','$_POST[select2]','$_POST[select3]','$_POST[dateofbirth]','Active')";
+		if($qsql = mysqli_query($con,$sql))
 		{
-		echo "<script>window.location='appointment.php?patid=$insid';</script>";	
+			echo "<script>alert('patients record inserted successfully...');</script>";
+			$insid= mysqli_insert_id($con);
+			if(isset($_SESSION[adminid]))
+			{
+				echo "<script>window.location='appointment.php?patid=$insid';</script>";	
+			}
+			else
+			{
+				echo "<script>window.location='patientlogin.php';</script>";	
+			}		
 		}
 		else
 		{
-		echo "<script>window.location='patientlogin.php';</script>";	
-		}		
+			echo mysqli_error($con);
+		}
 	}
-	else
-	{
-		echo mysqli_error($con);
-	}
-}
 }
 if(isset($_GET[editid]))
 {
@@ -49,122 +49,160 @@ if(isset($_GET[editid]))
 
 <div class="container-fluid">
 	<div class="block-header">
-            <h2>Patient profile Registration Panel</h2>
-            
-        </div>
-  <div class="card">
-    
-    <form method="post" action="" name="frmpatient" onSubmit="return validateform()">
-    <table class="table table-hover">
-      <tbody>
-        <tr>
-          <td width="34%">Patient Name</td>
-          <td width="66%"><input class="form-control" placeholder="Enter Here" type="text" name="patientname" id="patientname"  value="<?php echo $rsedit[patientname]; ?>"/></td>
-        </tr>
-<?php
-if(isset($_GET[editid]))
-{
-?>       
-        <tr>
-          <td>Admission Date</td>
-          <td><input class="form-control" placeholder="Enter Here" type="date" name="admissiondate" id="admissiondate" value="<?php echo $rsedit[admissiondate]; ?>" readonly /></td>
-        </tr>
-        <tr>
-          <td>Admission Time</td>
-          <td><input class="form-control" placeholder="Enter Here" type="time" name="admissiontme" id="admissiontme" value="<?php echo $rsedit[admissiontime]; ?>" readonly /></td>
-        </tr>
-<?php
-}
-?>
-        <tr>
-          <td>Address</td>
-          <td><textarea class="form-control no-resize" name="address" id="address" cols="45" rows="5" placeholder="Enter Here"><?php echo $rsedit[address]; ?></textarea></td>
-        </tr>
-        <tr>
-          <td>Mobile Number</td>
-          <td><input class="form-control" placeholder="Enter Here" type="text" name="mobilenumber" id="mobilenumber" value="<?php echo $rsedit[mobileno]; ?>" /></td>
-        </tr>
-        <tr>
-          <td>City</td>
-          <td><input class="form-control" placeholder="Enter Here" type="text" name="city" id="city" value="<?php echo $rsedit[city]; ?>" /></td>
-        </tr>
-        <tr>
-          <td>PIN Code</td>
-          <td><input class="form-control" placeholder="Enter Here" type="text" name="pincode" id="pincode" value="<?php echo $rsedit[pincode]; ?>" /></td>
-        </tr>
-        <tr>
-          <td>Login ID</td>
-          <td><input class="form-control" placeholder="Enter Here" type="text" name="loginid" id="loginid"  value="<?php echo $rsedit[loginid]; ?>"/></td>
-        </tr>
-        <tr>
-          <td>Password</td>
-          <td><input class="form-control" placeholder="Enter Here" type="password" name="password" id="password" value="<?php echo $rsedit[password]; ?>" /></td>
-        </tr>
-        <tr>
-          <td>Confirm Password</td>
-          <td><input class="form-control" placeholder="Enter Here" type="password" name="confirmpassword" id="confirmpassword"  value="<?php echo $rsedit[confirmpassword]; ?>"/></td>
-        </tr>
-        <tr>
-          <td>Blood Group</td>
-          <td><select class="form-control"  name="select2" id="select2">
-           <option value="">Select</option>
-          <?php
-		  $arr = array("A+","A-","B+","B-","O+","O-","AB+","AB-");
-		  foreach($arr as $val)
-		  {
-			  if($val == $rsedit[bloodgroup])
-			  {
-			  echo "<option value='$val' selected>$val</option>";
-			  }
-			  else
-			  {
-				  echo "<option value='$val'>$val</option>";			  
-			  }
-		  }
-		  ?>
-          </select></td>
-        </tr>
-        <tr>
-          <td>Gender</td>
-          <td><select class="form-control" name="select3" id="select3">
-           <option value="">Select</option>
-          <?php
-		  $arr = array("MALE","FEMALE");
-		  foreach($arr as $val)
-		  {
-			  if($val == $rsedit[gender])
-			  {
-			  echo "<option value='$val' selected>$val</option>";
-			  }
-			  else
-			  {
-				  echo "<option value='$val'>$val</option>";			  
-			  }
-		  }
-		  ?>
-          </select></td>
-        </tr>
-        <tr>
-          <td>Date Of Birth</td>
-          <td><input class="form-control" placeholder="Enter Here" type="date" name="dateofbirth" max="<?php echo date("Y-m-d"); ?>" id="dateofbirth"  value="<?php echo $rsedit[dob]; ?>"/></td>
-        </tr>
-       
-          
-        <tr>
-          <td colspan="2" align="center"><input class="btn btn-default" type="submit" name="submit" id="submit" value="Submit" /></td>
-        </tr>
-      </tbody>
-    </table>
-    </form>
-    <p>&nbsp;</p>
-  </div>
+		<h2>Patient Registration Panel</h2>
+
+	</div>
+	<div class="card">
+
+		<form method="post" action="" name="frmpatient" onSubmit="return validateform()" style="padding: 10px">
+
+
+
+			<div class="form-group"><label>Patient Name</label>
+				<div class="form-line">
+					<input class="form-control"  type="text" name="patientname" id="patientname"  value="<?php echo $rsedit[patientname]; ?>"/>
+				</div>
+			</div>
+
+			<?php
+			if(isset($_GET[editid]))
+			{
+				?>       
+
+				<div class="form-group"><label>Admission Date</label>
+					<div class="form-line">
+						<input class="form-control"  type="date" name="admissiondate" id="admissiondate" value="<?php echo $rsedit[admissiondate]; ?>" readonly />
+					</div>
+				</div>
+
+
+				<div class="form-group"><label>Admission Time</label>
+					<div class="form-line">
+						<input class="form-control"  type="time" name="admissiontme" id="admissiontme" value="<?php echo $rsedit[admissiontime]; ?>" readonly />
+					</div>
+				</div>
+
+				<?php
+			}
+			?>
+			<div class="form-group">
+				<label>Address</label> 
+				<div class="form-line">
+					<input class="form-control " name="address" id="tinymce" value="<?php echo $rsedit[address]; ?>">
+				</div>
+			</div>
+
+			<div class="form-group"><label>Mobile Number</label>
+				<div class="form-line">
+					<input class="form-control"  type="text" name="mobilenumber" id="mobilenumber" value="<?php echo $rsedit[mobileno]; ?>" />
+				</div>
+			</div>
+
+
+			<div class="form-group"><label>City</label>
+				<div class="form-line">
+					<input class="form-control"  type="text" name="city" id="city" value="<?php echo $rsedit[city]; ?>" />
+				</div>
+			</div>
+
+
+			<div class="form-group"><label>PIN Code</label>
+				<div class="form-line">
+					<input class="form-control"  type="text" name="pincode" id="pincode" value="<?php echo $rsedit[pincode]; ?>" />
+				</div>
+			</div>
+
+
+			<div class="form-group"><label>Login ID</label>
+				<div class="form-line">
+					<input class="form-control"  type="text" name="loginid" id="loginid"  value="<?php echo $rsedit[loginid]; ?>"/>
+				</div>
+			</div>
+
+
+			<div class="form-group"><label>Password</label>
+				<div class="form-line">
+					<input class="form-control"  type="password" name="password" id="password" value="<?php echo $rsedit[password]; ?>" />
+				</div>
+			</div>
+
+
+			<div class="form-group"><label>Confirm Password</label>
+				<div class="form-line">
+					<input class="form-control"  type="password" name="confirmpassword" id="confirmpassword"  value="<?php echo $rsedit[confirmpassword]; ?>"/>
+				</div>
+			</div>
+
+
+			<div class="form-group"><label>Blood Group</label>  	
+				<div class="form-line"><select class="form-control show-tick"  name="select2" id="select2">
+					<option value="">Select</option>
+					<?php
+					$arr = array("A+","A-","B+","B-","O+","O-","AB+","AB-");
+					foreach($arr as $val)
+					{
+						if($val == $rsedit[bloodgroup])
+						{
+							echo "<option value='$val' selected>$val</option>";
+						}
+						else
+						{
+							echo "<option value='$val'>$val</option>";			  
+						}
+					}
+					?>
+				</select>
+			</div>
+		</div>
+
+
+		<div class="form-group"><label>Gender</label>  	
+			<div class="form-line"><select class="form-control show-tick" name="select3" id="select3">
+				<option value="">Select</option>
+				<?php
+				$arr = array("MALE","FEMALE");
+				foreach($arr as $val)
+				{
+					if($val == $rsedit[gender])
+					{
+						echo "<option value='$val' selected>$val</option>";
+					}
+					else
+					{
+						echo "<option value='$val'>$val</option>";			  
+					}
+				}
+				?>
+			</select>
+		</div>
+	</div>
+
+
+	<div class="form-group"><label>Date Of Birth</label>
+		<div class="form-line">
+			<input class="form-control"  type="date" name="dateofbirth" max="<?php echo date("Y-m-d"); ?>" id="dateofbirth"  value="<?php echo $rsedit[dob]; ?>"/>
+		</div>
+	</div>
+
+
+
+
+
+	<input class="btn btn-default" type="submit" name="submit" id="submit" value="Submit" />
+
+
+
+
+</form>
+<p>&nbsp;</p>
 </div>
 </div>
- <div class="clear"></div>
-  </div>
+</div>
+<div class="clear"></div>
+</div>
 </div>
 <?php
-include("adfooter.php");
+include("adformfooter.php");
 ?>
 <script type="application/javascript">
 var alphaExp = /^[a-zA-Z]+$/; //Variable to validate only alphabets
@@ -181,7 +219,7 @@ function validateform()
 		document.frmpatient.patientname.focus();
 		return false;
 	}
-else if(!document.frmpatient.patientname.value.match(alphaspaceExp))
+	else if(!document.frmpatient.patientname.value.match(alphaspaceExp))
 	{
 		alert("Patient name not valid..");
 		document.frmpatient.patientname.focus();

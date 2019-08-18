@@ -24,7 +24,7 @@ if(isset($_GET[approveid]))
 	<div class="block-header">
 		View Appointment records
 	</div>
-</div>
+
 <div class="card">
 	<section class="container">
 		<table class="table table-bordered table-striped table-hover js-basic-example dataTable">
@@ -96,7 +96,7 @@ if(isset($_GET[approveid]))
 	</section>
 
 </div>
- 
+</div> 
 <?php
 include("adformfooter.php");
 ?>
