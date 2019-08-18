@@ -1,4 +1,4 @@
-## This is a Startup Project. May contain Bugs.
+ This is a Startup Project. # May contain Bugs.
 
 # INSTALLATION
 ------------
