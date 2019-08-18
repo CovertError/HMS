@@ -1,7 +1,7 @@
 <?php
 
-include("adheader.php");
-include("dbconnection.php");
+include("../../layouts/adheader.php");
+include("../../config/dbconnection.php");
 if(isset($_POST[submit]))
 {
   if(isset($_GET[editid]))
@@ -25,9 +25,9 @@ else
    if($qsql = mysqli_query($con,$sql))
    {
 
-    include("insertbillingrecord.php");	
+    include("../../layouts/insertbillingrecord.php");	
     echo "<script>alert('Appointment record inserted successfully...');</script>";
-    echo "<script>window.location='patientreport.php?patientid=$_POST[select4]';</script>";
+    echo "<script>window.location='../patient/patientreport.php?patientid=$_POST[select4]';</script>";
 }
 else
 {
@@ -239,7 +239,7 @@ if(isset($_GET[editid]))
 
 
 
-<?php include 'adfooter.php'; ?>
+<?php include '../../layouts/adfooter.php'; ?>
 <script type="application/javascript">
 function validateform() {
     if (document.frmappnt.select4.value == "") {

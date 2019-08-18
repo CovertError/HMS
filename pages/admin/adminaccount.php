@@ -1,15 +1,11 @@
 <?php
-include("layouts/adheader.php");
-include("config/dbconnection.php");
+include("../../layouts/adheader.php");
+include("../../config/dbconnection.php");
 
 session_start();
 if(!isset($_SESSION[adminid]))
 {
-    echo "<script>window.location='adminlogin.php';</script>";
-}
-if(!isset($_SESSION[adminid]))
-{
-    echo "<script>window.location='adminlogin.php';</script>";
+    echo "<script>window.location='../../auth/adminlogin.php';</script>";
 }
 
 ?>
@@ -100,5 +96,5 @@ if(!isset($_SESSION[adminid]))
 </div>
 </div>
 <?php
-include("layouts/adfooter.php");
+include("../../layouts/adfooter.php");
 ?>

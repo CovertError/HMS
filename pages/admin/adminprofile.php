@@ -1,7 +1,7 @@
 <?php
 
-include("adheader.php");
-include("dbconnection.php");
+include("../../layouts/adheader.php");
+include("../../config/dbconnection.php");
 session_start();
 if(isset($_POST[submit]))
 {
@@ -112,7 +112,7 @@ if(isset($_SESSION[adminid]))
 </div>
 </div>
 <?php
-			include("adfooter.php");
+			include("../../layouts/adfooter.php");
 			?>
 <script type="application/javascript">
 var alphaExp = /^[a-zA-Z]+$/; //Variable to validate only alphabets
