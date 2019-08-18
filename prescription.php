@@ -43,21 +43,20 @@ if(isset($_GET[editid]))
 	
 }
 ?>
+<div class="container-fluid">
+        <div class="block-header">
+            <h2>Add New Prescription</h2>
+            
+        </div>
+        <div class="row clearfix">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+				<div class="card" style="padding: 10px">
 
-<div class="wrapper col2">
-  <div id="breadcrumb">
-    <ul>
-      <li class="first">Add New Prescription</li></ul>
-  </div>
-</div>
-<div class="wrapper col4">
-  <div id="container">
-    <h1>Add new prescription record</h1>
      <form method="post" action="" name="frmpres" onSubmit="return validateform()">
      <input type="hidden" name="patientid" value="<?php echo $_GET[patientid]; ?>"  />
      <input type="hidden" name="treatmentid" value="<?php echo $_GET[treatmentid]; ?>"  />
      <input type="hidden" name="appid" value="<?php echo $_GET[appid]; ?>"  />
-    <table class="table table-bordered">
+    <table class="table table-bordered table-striped">
       <tbody>
         <tr>
           <td>Patient</td>

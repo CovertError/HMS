@@ -8,7 +8,7 @@ if(isset($_POST[submit]))
 				$sql ="UPDATE patient SET status='Active' WHERE patientid='$_GET[patientid]'";
 				$qsql=mysqli_query($con,$sql);
 			$roomid=0;
-			$sql ="UPDATE appointment SET appointmenttype='$_POST[apptype]',roomid='$_POST[select3]',departmentid='$_POST[select5]',doctorid='$_POST[select6]',status='Approved',appointmentdate='$_POST[appointmentdate]',appointmenttime='$_POST[time]' WHERE appointmentid='$_GET[editid]'";
+			$sql ="UPDATE appointment SET appointmenttype='$_POST[apptype]',departmentid='$_POST[select5]',doctorid='$_POST[select6]',status='Approved',appointmentdate='$_POST[appointmentdate]',appointmenttime='$_POST[time]' WHERE appointmentid='$_GET[editid]'";
 			if($qsql = mysqli_query($con,$sql))
 			{
 				$roomid= $_POST[select3];

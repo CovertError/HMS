@@ -24,26 +24,16 @@ if(isset($_GET[editid]))
 <?php
 if(!isset($_GET[patientid]))
 {
-?><div class="container-fluid">
+?>
+<div class="container-fluid">
         <div class="block-header">
             <h2>Book Appointment</h2>
-            <small class="text-muted">Welcome to Swift application</small>
+            
         </div>
         <div class="row clearfix">
 			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 				<div class="card">
-					<div class="header">
-						<h2>Appointment Information <small>Description text here...</small> </h2>
-						<ul class="header-dropdown m-r--5">
-							<li class="dropdown"> <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="zmdi zmdi-more-vert"></i></a>
-								<ul class="dropdown-menu pull-right">
-									<li><a href="javascript:void(0);" class=" waves-effect waves-block">Action</a></li>
-									<li><a href="javascript:void(0);" class=" waves-effect waves-block">Another action</a></li>
-									<li><a href="javascript:void(0);" class=" waves-effect waves-block">Something else here</a></li>
-								</ul>
-							</li>
-						</ul>
-					</div>
+					
 					<div class="body">
                         <div class="row clearfix">
                             <div class="col-sm-6 col-xs-12">
@@ -107,7 +97,7 @@ if(!isset($_GET[patientid]))
 		</div>
     </div>
 <form method="post" action="" name="frmpatdet" onSubmit="return validateform()">
-      <table width="808" border="1">
+      <table class="table table-bordered table-striped">
       <tbody>
      <tr>
                 <td width="17%"><strong>Patient Name </strong></td>
@@ -147,7 +137,7 @@ $qsqlpatient = mysqli_query($con,$sqlpatient);
 $rspatient=mysqli_fetch_array($qsqlpatient);
 ?>
 
-    <table width="808" border="1" class="table table-striped">
+    <table class="table table-bordered table-striped">
       <tbody>
         <tr>
           <td width="16%"><strong>Patient Name </strong></td>

@@ -223,18 +223,14 @@ if(isset($_SESSION[adminid]))
 	$sqlbilling_records ="SELECT * FROM billing WHERE appointmentid='$billappointmentid'";
 	$qsqlbilling_records = mysqli_query($con,$sqlbilling_records);
 	$rsbilling_records = mysqli_fetch_array($qsqlbilling_records);
-	if($rsbilling_records[discharge_date] == "0000-00-00")
-	{
+	
 				  ?>  
-				  <table width="557" border="3">
-			  <tbody>
-				<tr>
-				  <th scope="col"><div align="center"><a href="paymentdischarge.php?appointmentid=<?php echo $rsappointment[0]; ?>&patientid=<?php echo $_GET[patientid]; ?>">Make Payment</a></div></th>
-				</tr>
-			  </tbody>
-			</table>
+				  
+			 
+				  <a class="btn btn-raised" href="paymentdischarge.php?appointmentid=<?php echo $rsappointment[0]; ?>&patientid=<?php echo $_GET[patientid]; ?>">Make Payment</a>
+			
 			<?php
-	}
+	
                 }
                 ?>
             </p>

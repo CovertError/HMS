@@ -52,7 +52,7 @@ else
 	$qsqldoctor = mysqli_query($con,$sqldoctor);
 	$rsdoctor =mysqli_fetch_array($qsqldoctor);
 ?>
-<table width="464" class="table table-striped">
+<table class="table table-bordered table-striped">
   
   
   <tr>

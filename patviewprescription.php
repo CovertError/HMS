@@ -19,7 +19,21 @@ if(isset($_GET[delid]))
 
   </div>
 
-<div class="card">
+
+    <?php
+          $sql ="SELECT * FROM prescription where patientid='$_SESSION[patientid]'";
+          $qsql = mysqli_query($con,$sql);
+          while($rs = mysqli_fetch_array($qsql))
+          {
+            $sqlpatient = "SELECT * FROM patient WHERE patientid='$rs[patientid]'";
+            $qsqlpatient = mysqli_query($con,$sqlpatient);
+            $rspatient = mysqli_fetch_array($qsqlpatient);
+
+            $sqldoctor = "SELECT * FROM doctor WHERE doctorid='$rs[doctorid]'";
+            $qsqldoctor = mysqli_query($con,$sqldoctor);
+            $rsdoctor = mysqli_fetch_array($qsqldoctor);
+            ?>
+    <div class="card" style="padding: 10px">
 
   <section class="container">
     <table class="table table-bordered table-striped table-hover ">
@@ -33,19 +47,7 @@ if(isset($_GET[delid]))
             </tr>
         </thead>
         <tbody>
-          <?php
-          $sql ="SELECT * FROM prescription where patientid='$_SESSION[patientid]'";
-          $qsql = mysqli_query($con,$sql);
-          while($rs = mysqli_fetch_array($qsql))
-          {
-            $sqlpatient = "SELECT * FROM patient WHERE patientid='$rs[patientid]'";
-            $qsqlpatient = mysqli_query($con,$sqlpatient);
-            $rspatient = mysqli_fetch_array($qsqlpatient);
-
-            $sqldoctor = "SELECT * FROM doctor WHERE doctorid='$rs[doctorid]'";
-            $qsqldoctor = mysqli_query($con,$sqldoctor);
-            $rsdoctor = mysqli_fetch_array($qsqldoctor);
-            ?>
+          
 
             <?php
             echo "<tr>

@@ -12,7 +12,7 @@ if(isset($_POST[submit]))
 	{
 		$dt = date("Y-m-d");
 		$tim = date("H:i:s");
-		$sql ="INSERT INTO patient(patientname,admissiondate,admissiontime,address,city,mobileno,loginid,password,gender,dob,status) values('$_POST[patiente]','$dt','$tim','$_POST[textarea]','$_POST[city]','$_POST[mobileno]','$_POST[loginid]','$_POST[password]','$_POST[select6]','$_POST[dob]','Pending')";
+		$sql ="INSERT INTO patient(patientname,admissiondate,admissiontime,address,city,mobileno,loginid,password,gender,dob,status) values('$_POST[patiente]','$dt','$tim','$_POST[textarea]','$_POST[city]','$_POST[mobileno]','$_POST[loginid]','$_POST[password]','$_POST[select6]','$_POST[dob]','Active')";
 		if($qsql = mysqli_query($con,$sql))
 		{
 			/* echo "<script>alert('patient record inserted successfully...');</script>"; */
@@ -233,7 +233,7 @@ if(isset($_SESSION[patientid]))
                                             <label>
 
                                                 <select name="department" class="selectpicker" id="department"
-                                                    onchange="loaddoctor(this.value)">
+                                                    >
                                                     <option value="">Select department</option>
                                                     <?php
                                 $sqldept = "SELECT * FROM department WHERE status='Active'";
@@ -250,8 +250,8 @@ if(isset($_SESSION[patientid]))
                                         </li>
                                         <li class="col-sm-6">
                                             <label>
-                                                <select name="department" class="selectpicker" id="department"
-                                                    onchange="loaddoctor(this.value)">
+                                                <select name="doct" class="selectpicker" id="department"
+                                                    >
                                                     <option value="">Select department</option>
                                                     <?php
                         $sqldept = "SELECT * FROM doctor WHERE status='Active'";

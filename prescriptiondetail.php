@@ -1,10 +1,10 @@
-<table class="table table-hover table-bordered">
+<table class="table table-bordered table-striped">
       <tbody>
         <tr>
-          <th><strong>Doctor</strong></th>
-          <th><strong>Patient</strong></th>
-          <th><strong>Prescription Date</strong></th>
-          <th><strong>View</strong></th>              
+          <th>Doctor</th>
+          <th>Patient</th>
+          <th>Prescription Date</th>
+          <th>View</th>              
         </tr>
 <?php
 $sql ="SELECT * FROM prescription WHERE patientid='$_GET[patientid]' AND appointmentid='$_GET[appointmentid]'";
@@ -37,7 +37,7 @@ if(isset($_SESSION[doctorid]))
 	<table>
 		<tr>
 			<td>
-			<div align="center"><strong><a href="prescription.php?patientid=<?php echo $_GET[patientid]; ?>&appid=<?php echo $rsappointment[appointmentid]; ?>">Add Prescription records</a></strong></div>
+			<div align="center"><a href="prescription.php?patientid=<?php echo $_GET[patientid]; ?>&appid=<?php echo $rsappointment[appointmentid]; ?>">Add Prescription records</a></div>
 			</td>
 		</tr>
 	</table>

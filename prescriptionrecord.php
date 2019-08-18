@@ -54,9 +54,9 @@ if(isset($_GET[editid]))
 
 
 <div class="container-fluid">
-	<h1>Add New Prescription Record</h1>
-  <div class="card">
- <table class="table table-striped">
+	<div class="block-header"><h2>Add New Prescription Record</h2></div>
+  <div class="card" style="padding:10px">
+ <table class="table table-bordered table-striped">
       <tbody>
         <tr>
           <td><strong>Doctor</strong></td>
@@ -90,8 +90,8 @@ if(isset($_GET[editid]))
       </tbody>
     </table>
 	</div>
-	<div class="block-header"><h1>Add Prescription record</h1></div>
-	<div class="card">
+	
+	<div class="card" style="padding:10px">
   
            <?php
 			if(!isset($_SESSION[patientid]))
@@ -160,9 +160,9 @@ if(isset($_GET[editid]))
 			}
 		?>
 	</div>
-	<div class="block-header"><h1>View Prescription record</h1></div>
+	<div class="block-header"><h2>View Prescription record</h2></div>
     
-  	<div class="card">
+  	<div class="card" style="padding:10px">
     <table class="table table-hover table-striped">
       <tbody>
         <tr>
