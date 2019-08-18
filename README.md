@@ -27,4 +27,4 @@ Run Project Through Xampp and Browser.
 
 # Demo
 ---
-https://kabir.infantinventory.com/hms
+https://www.kabir.infantinventory.com/hms/
