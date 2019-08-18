@@ -115,7 +115,8 @@ if(isset($_SESSION[patientid]))
                                             <label>
 
 
-                                                <input placeholder="patient name" type="text" class="form-control" name="patiente" id="patiente"
+                                                <input placeholder="patient name" type="text" class="form-control"
+                                                    name="patiente" id="patiente"
                                                     value="<?php echo $rspatient[patientname];  ?>"
                                                     <?php echo $readonly; ?>>
                                                 <i class="icon-user"></i>
@@ -124,22 +125,24 @@ if(isset($_SESSION[patientid]))
                                         </li>
 
                                         <li class="col-sm-6">
-                                            <label><input placeholder="address" type="text" class="form-control" name="textarea" id="textarea"
+                                            <label><input placeholder="address" type="text" class="form-control"
+                                                    name="textarea" id="textarea"
                                                     value="<?php echo $rspatient[address];  ?>"
                                                     <?php echo $readonly; ?>><i class="icon-compass"></i>
                                             </label>
 
                                         </li>
                                         <li class="col-sm-6">
-                                            <label><input placeholder="city" type="text" class="form-control" name="city" id="city"
-                                                    value="<?php echo $rspatient[city];  ?>" <?php echo $readonly; ?>><i
-                                                    class="icon-pin"></i>
+                                            <label><input placeholder="city" type="text" class="form-control"
+                                                    name="city" id="city" value="<?php echo $rspatient[city];  ?>"
+                                                    <?php echo $readonly; ?>><i class="icon-pin"></i>
                                             </label>
 
                                         </li>
                                         <li class="col-sm-6">
                                             <label>
-                                                <input placeholder="mobile number" type="text" class="form-control" name="mobileno" id="mobileno"
+                                                <input placeholder="mobile number" type="text" class="form-control"
+                                                    name="mobileno" id="mobileno"
                                                     value="<?php echo $rspatient[mobileno];  ?>"
                                                     <?php echo $readonly; ?>><i class="icon-phone"></i>
                                             </label>
@@ -151,7 +154,8 @@ if(isset($_SESSION[patientid]))
                                 ?>
                                         <li class="col-sm-6">
                                             <label>
-                                                <input placeholder="login id" type="text" class="form-control" name="loginid" id="loginid"
+                                                <input placeholder="login id" type="text" class="form-control"
+                                                    name="loginid" id="loginid"
                                                     value="<?php echo $rspatient[loginid];  ?>"
                                                     <?php echo $readonly; ?>><i class="icon-login"></i>
                                             </label>
@@ -160,8 +164,9 @@ if(isset($_SESSION[patientid]))
                                         <li class="col-sm-6">
                                             <label>
 
-                                                <input placeholder="password" type="password" class="form-control" name="password"
-                                                    id="password" value="<?php echo $rspatient[password];  ?>"
+                                                <input placeholder="password" type="password" class="form-control"
+                                                    name="password" id="password"
+                                                    value="<?php echo $rspatient[password];  ?>"
                                                     <?php echo $readonly; ?>><i class="icon-lock"></i>
                                             </label>
 
@@ -199,7 +204,8 @@ if(isset($_SESSION[patientid]))
                                         </li>
                                         <li class="col-sm-6">
                                             <label>
-                                                <input placeholder="Date of birth" type="text" class="form-control" name="dob" id="dob" onfocus="(this.type='date')"
+                                                <input placeholder="Date of birth" type="text" class="form-control"
+                                                    name="dob" id="dob" onfocus="(this.type='date')"
                                                     value="<?php echo $rspatient[dob]; ?>" <?php echo $readonly; ?>><i
                                                     class="ion-calendar"></i>
                                             </label>
@@ -209,15 +215,17 @@ if(isset($_SESSION[patientid]))
                                             <label>
                                                 <input placeholder="Appointment date" type="text" class="form-control"
                                                     min="<?php echo date("Y-m-d"); ?>" name="appointmentdate"
-                                                    onfocus="(this.type='date')"
-                                                    id="appointmentdate"><i class="ion-calendar"></i>
+                                                    onfocus="(this.type='date')" id="appointmentdate"><i
+                                                    class="ion-calendar"></i>
                                             </label>
 
                                         </li>
                                         <li class="col-sm-6">
                                             <label>
-                                                <input placeholder="Appointment time" type="text" onfocus="(this.type='time')" class="form-control" name="appointmenttime"
-                                                    id="appointmenttime"><i class="ion-ios-clock"></i>
+                                                <input placeholder="Appointment time" type="text"
+                                                    onfocus="(this.type='time')" class="form-control"
+                                                    name="appointmenttime" id="appointmenttime"><i
+                                                    class="ion-ios-clock"></i>
                                             </label>
 
                                         </li>
@@ -267,7 +275,8 @@ if(isset($_SESSION[patientid]))
                                         </li>
                                         <li class="col-sm-12">
                                             <label>
-                                                <textarea class="form-control" name="app_reason" placeholder="Appointment reason"></textarea>
+                                                <textarea class="form-control" name="app_reason"
+                                                    placeholder="Appointment reason"></textarea>
                                             </label>
                                         </li>
                                         <li class="col-sm-12">
@@ -280,7 +289,7 @@ if(isset($_SESSION[patientid]))
                     </div>
                 </div>
 
-                
+
                 <?php
 }
 ?>
