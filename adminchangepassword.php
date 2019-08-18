@@ -1,7 +1,7 @@
 <?php
 
-include("../../layouts/adheader.php");
-include("../../config/dbconnection.php");
+include("adheader.php");
+include("dbconnection.php");
 session_start();
 if(isset($_POST[submit]))
 {
@@ -75,7 +75,7 @@ if(isset($_POST[submit]))
   </div>
 </div>
 <?php
-include("../../layouts/adfooter.php");
+include("adfooter.php");
 ?>
 <script type="application/javascript">
 function validateform1()

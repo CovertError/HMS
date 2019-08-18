@@ -1,5 +1,5 @@
 
-  <?php include 'layouts/header.php';?>
+  <?php include 'header.php';?>
   <!-- Bnr Header -->
   <section class="main-banner">
     <div class="tp-banner-container">
@@ -523,4 +523,4 @@
   </div>
   
   <!-- Footer -->
-<?php include 'layouts/footer.php';?>
+<?php include 'footer.php';?>

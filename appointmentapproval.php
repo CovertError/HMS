@@ -1,6 +1,6 @@
 <?php
-include("../../layouts/adheader.php");
-include("../../config/dbconnection.php");
+include("adheader.php");
+include("dbconnection.php");
 if(isset($_POST[submit]))
 {
 		if(isset($_GET[editid]))
@@ -9,7 +9,18 @@ if(isset($_POST[submit]))
 				$qsql=mysqli_query($con,$sql);
 			$roomid=0;
 			$sql ="UPDATE appointment SET appointmenttype='$_POST[apptype]',roomid='$_POST[select3]',departmentid='$_POST[select5]',doctorid='$_POST[select6]',status='Approved',appointmentdate='$_POST[appointmentdate]',appointmenttime='$_POST[time]' WHERE appointmentid='$_GET[editid]'";
-			
+			if($qsql = mysqli_query($con,$sql))
+			{
+				$roomid= $_POST[select3];
+				$billtype = "Room Rent";
+				include("insertbillingrecord.php");				
+				echo "<script>alert('appointment record updated successfully...');</script>";				
+				echo "<script>window.location='patientreport.php?patientid=$_GET[patientid]&appointmentid=$_GET[editid]';</script>";
+			}
+			else
+			{
+				echo mysqli_error($con);
+			}	
 		}
 		else
 		{
@@ -36,14 +47,11 @@ if(isset($_GET[editid]))
 }
 ?>
 
-<div class="container-fluid">
-    <div class="block-header">
-        <h2>Approve Appoinment</h2>
-    </div>
-		<div class="card ">
+
+<div class="card ">
  
-    
-   <form method="post" action="" name="frmappnt" onSubmit="return validateform()" style="padding: 10px">
+    <h2>Appointment record Approval Process</h2>
+   <form method="post" action="" name="frmappnt" onSubmit="return validateform()">
   
     <table class="table table-striped">                
         <tr>
@@ -136,12 +144,13 @@ if(isset($_GET[editid]))
       </tbody>
     </table>
     </form>
+    <p>&nbsp;</p>
   </div>
-</div>
+
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <?php
-include("../../layouts/adfooter.php");
+include("adfooter.php");
 ?>
 <script type="application/javascript">
 function validateform()

@@ -1,6 +1,6 @@
 <?php
-include("layouts/adheader.php");
-include("config/dbconnection.php");
+include("adheader.php");
+include("dbconnection.php");
 
 session_start();
 if(!isset($_SESSION[adminid]))
@@ -100,5 +100,5 @@ if(!isset($_SESSION[adminid]))
 </div>
 </div>
 <?php
-include("layouts/adfooter.php");
+include("adfooter.php");
 ?>

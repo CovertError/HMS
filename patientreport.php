@@ -1,7 +1,8 @@
 <?php
 
-include("../../layouts/adheader.php");
-include("../../config/dbconnection.php");
+include("adheader.php");
+session_start();
+include("dbconnection.php");
 if(isset($_POST[submit]))
 {
 		if(isset($_GET[editid]))
@@ -57,7 +58,7 @@ if(isset($_GET[editid]))
     <p>
     
     <!-- jQuery Library -->
-<script src="../../js/jquery.min.js"></script>
+<script src="js/jquery.min.js"></script>
 <script type="text/javascript">
 jQuery(document).ready(function($) { 
 
@@ -151,7 +152,7 @@ jQuery(document).ready(function($) {
 	<a href="#" title="Title of Toggle" class="toggle-trigger">Patient Profile</a>
 	<!-- Toggle Content to display -->
 	<div class="toggle-content">
-		<p><?php include("../patient/patientdetail.php"); ?></p>
+		<p><?php include("patientdetail.php"); ?></p>
 	</div><!-- .toggle-content (end) -->
 </div><!-- .toggle (end) -->
 
@@ -161,7 +162,7 @@ jQuery(document).ready(function($) {
 	<a href="#" title="Title of Toggle" class="toggle-trigger">Appointment record</a>
 	<!-- Toggle Content to display -->
 	<div class="toggle-content">
-		<p><?php include("../appoinment/appointmentdetail.php"); ?></p>
+		<p><?php include("appointmentdetail.php"); ?></p>
 	</div><!-- .toggle-content (end) -->
 </div><!-- .toggle (end) -->
 
@@ -172,7 +173,7 @@ jQuery(document).ready(function($) {
 	<a href="#" title="Title of Toggle" class="toggle-trigger">Treatment record</a>
 	<!-- Toggle Content to display -->
 	<div class="toggle-content">
-		<p><?php include("../admin/treatmentdetail.php"); ?></p>
+		<p><?php include("treatmentdetail.php"); ?></p>
 	</div><!-- .toggle-content (end) -->
 </div><!-- .toggle (end) -->
 
@@ -183,7 +184,7 @@ jQuery(document).ready(function($) {
 	<!-- Toggle Content to display -->
 	<div class="toggle-content">
 		<p><?php
-        include("../prescription/prescriptiondetail.php");
+        include("prescriptiondetail.php");
 		?></p>
 	</div><!-- .toggle-content (end) -->
 </div><!-- .toggle (end) -->
@@ -196,7 +197,7 @@ jQuery(document).ready(function($) {
 	<div class="toggle-content">
 		<p><?php
         $billappointmentid= $rsappointment[0]; 
-		include("../report/viewbilling.php"); ?>
+		include("viewbilling.php"); ?>
         </p>
 	</div><!-- .toggle-content (end) -->
 </div><!-- .toggle (end) -->
@@ -214,7 +215,7 @@ if(isset($_SESSION[adminid]))
         <div class="toggle-content">
             <p><?php
             $billappointmentid= $rsappointment[0]; 
-            include("../report/viewpaymentreport.php"); ?>
+            include("viewpaymentreport.php"); ?>
                       <?php
                 if(!isset($_SESSION[patientid]))
                 {
@@ -250,5 +251,5 @@ if(isset($_SESSION[adminid]))
   </div>
 </div>
 <?php
-include("../../layouts/adfooter.php");
+include("adfooter.php");
 ?>

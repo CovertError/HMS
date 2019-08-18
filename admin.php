@@ -1,5 +1,5 @@
 <?php
-include("layouts/adheader.php");
+include("adheader.php");
 include("dbconnection.php");
 if(isset($_POST[submit]))
 {
@@ -135,7 +135,7 @@ if(isset($_GET[editid]))
 </div>
 
 				<?php
-				include("layouts/adfooter.php");
+				include("adfooter.php");
 				?>
 				<script type="application/javascript">
 var alphaExp = /^[a-zA-Z]+$/; //Variable to validate only alphabets

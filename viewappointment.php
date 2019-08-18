@@ -1,6 +1,6 @@
 <?php
-include("../../layouts/adformheader.php");
-include("../../config/dbconnection.php");
+include("adformheader.php");
+include("dbconnection.php");
 if(isset($_GET[delid]))
 {
 	$sql ="DELETE FROM appointment WHERE appointmentid='$_GET[delid]'";
@@ -93,5 +93,5 @@ if(isset($_GET[approveid]))
 </div>
 </div>
 <?php
-include("../../layouts/adformfooter.php");
+include("adformfooter.php");
 ?>

@@ -4,7 +4,7 @@ session_start();
 ?>
 <?php
 error_reporting(0);
-include("../config/dbconnection.php");
+include("dbconnection.php");
 $dt = date("Y-m-d");
 $tim = date("H:i:s");
 ?>
@@ -16,15 +16,15 @@ $tim = date("H:i:s");
 <meta http-equiv="X-UA-Compatible" content="IE=Edge">
 <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 <title>:: Care And Cure - Hospital Admin ::</title>
-<link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-<link rel="icon" href="../favicon.ico" type="image/x-icon">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
 <!-- Custom Css -->
-<link href="../assets/css/main.css" rel="stylesheet">
-<link href="../assets/css/login.css" rel="stylesheet">
+<link href="assets/css/main.css" rel="stylesheet">
+<link href="assets/css/login.css" rel="stylesheet">
 
 <!-- Swift Themes. You can choose a theme from css/themes instead of get all themes -->
-<link href="../assets/css/themes/all-themes.css" rel="stylesheet" />
+<link href="assets/css/themes/all-themes.css" rel="stylesheet" />
 </head>
 <body class="theme-cyan login-page authentication">
 <!-- header section -->
@@ -32,7 +32,7 @@ $tim = date("H:i:s");
 <?php
 if(isset($_SESSION[adminid]))
 {
-	echo "<script>window.location='../pages/admin/adminaccount.php';</script>";
+	echo "<script>window.location='adminaccount.php';</script>";
 }
 $err='';
 if(isset($_POST[submit]))
@@ -44,12 +44,12 @@ if(isset($_POST[submit]))
 	{
 		$rslogin = mysqli_fetch_array($qsql);
 		$_SESSION[adminid]= $rslogin[adminid] ;
-		echo "<script>window.location='../pages/admin/adminaccount.php';</script>";
+		echo "<script>window.location='adminaccount.php';</script>";
 	}
 	else
 	{
 		$err = "<div class='alert alert-danger'>
-		<strong>Oh !</strong> Password Does not Match
+		<strong>Oh !</strong> Change a few things up and try submitting again.
 	</div>";
 	}
 }
@@ -82,7 +82,7 @@ if(isset($_POST[submit]))
                     </div>
                     <div class="text-center">
 					<input type="submit" name="submit" id="submit" value="Login" class="btn btn-raised waves-effect g-bg-cyan" /></div>
-                    <div class="text-center"> <a href="../forgot-password.html">Forgot Password?</a></div>
+                    <div class="text-center"> <a href="forgot-password.html">Forgot Password?</a></div>
                 </div>
             </form>
         </div>
@@ -93,10 +93,10 @@ if(isset($_POST[submit]))
   </div>
 </div>
 <!-- Jquery Core Js --> 
-<script src="../assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
-<script src="../assets/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
+<script src="assets/bundles/libscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
+<script src="assets/bundles/vendorscripts.bundle.js"></script> <!-- Lib Scripts Plugin Js -->
 
-<script src="../assets/bundles/mainscripts.bundle.js"></script><!-- Custom Js -->
+<script src="assets/bundles/mainscripts.bundle.js"></script><!-- Custom Js -->
 </body>
 </html>
 <script type="application/javascript">

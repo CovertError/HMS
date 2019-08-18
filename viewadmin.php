@@ -1,6 +1,6 @@
 <?php
-include("../../layouts/adformheader.php");
-include("../../config/dbconnection.php");
+include("adformheader.php");
+include("dbconnection.php");
 if(isset($_GET[delid]))
 {
 	$sql ="DELETE FROM admin WHERE adminid='$_GET[delid]'";
@@ -41,7 +41,7 @@ if(isset($_GET[delid]))
       <td>$rs[loginid]</td>
       <td>$rs[status]</td>
       <td>
-      <a href='../admin/admin.php?editid=$rs[adminid]' class='btn btn-raised g-bg-cyan'>Edit</a> <a href='viewadmin.php?delid=$rs[adminid]' class='btn btn-raised g-bg-blush2'>Delete</a> </td>
+      <a href='admin.php?editid=$rs[adminid]' class='btn btn-raised g-bg-cyan'>Edit</a> <a href='viewadmin.php?delid=$rs[adminid]' class='btn btn-raised g-bg-blush2'>Delete</a> </td>
       </tr>";
     }
     ?>
@@ -55,5 +55,5 @@ if(isset($_GET[delid]))
 
 
 <?php
-include("../../layouts/adformfooter.php");
+include("adformfooter.php");
 ?>
